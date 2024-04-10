@@ -21,9 +21,10 @@ export const EmailTemplate = ({ responce }) => (
     <Body style={main}>
       <Container>
         {/* Logo Image */}
-        <Section style={{ textAlign: 'center' }}>
+        <Section style={{ textAlign: 'center', display: 'flex', justifyContent: 'center', alignItems: 'center', height: '200px' }}>
           <Img width={200} src="https://firebasestorage.googleapis.com/v0/b/file-sharing-980d9.appspot.com/o/file-upload%2Flogo1.png?alt=media&token=a0406429-712f-4798-a7dd-c4c58c933f0a" style={logo} />
         </Section>
+
 
         {/* Content */}
         <Section style={content}>
