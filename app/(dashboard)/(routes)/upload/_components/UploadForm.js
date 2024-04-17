@@ -8,9 +8,9 @@ function UploadForm({ uploadBtnClick, progress }) {
     const [errorMsg, setErrorMsg] = useState();
     const onFileSelect = (file) => {
         console.log(file)
-        if (file && file.size > 5000000) {
-            console.log("Size is Greate than 5 MB");
-            setErrorMsg('Maximum File Upload Size is 5 MB')
+        if (file && file.size > 500000000) {
+            console.log("Size is Greate than 500 MB");
+            setErrorMsg('Maximum File Upload Size is 500 MB')
             return;
         }
         setErrorMsg(null)
@@ -40,7 +40,7 @@ function UploadForm({ uploadBtnClick, progress }) {
                                 Click to upload</span>
                             or <strong className='text-primary'>
                                 drag</strong> and <strong className='text-primary'>drop</strong></p>
-                        <p className="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF ( Max Size : 2MB)</p>
+                        <p className="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF ( Max Size : 500MB)</p>
                     </div>
                     <input id="dropzone-file"
                         type="file" className="hidden"
