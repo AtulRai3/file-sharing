@@ -1,4 +1,4 @@
-"use client"
+'use client'
 // Files.js
 
 import React, { useEffect, useState } from 'react';
@@ -54,9 +54,10 @@ function Files() {
       ) : fileList.length === 0 ? (
         <>
           <h2 className="mb-6">You don't have any files</h2>
-          <Link href={process.env.NEXT_PUBLIC_DOMAIN} className="p-2 text-white bg-primary rounded-md mt-7">
+          <Link href="/upload" className="p-2 text-white bg-primary rounded-md mt-7">
             Upload Now
           </Link>
+
         </>
       ) : (
         <>

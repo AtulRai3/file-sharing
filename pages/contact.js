@@ -1,100 +1,64 @@
+import React, { useState } from 'react';
+import Header from '../app/_components/Header';
+import Footer from '../app/_components/_components/Footer'; // Import Footer component
+import emailjs from 'emailjs-com';
 import './globals.css';
 
-import Header from '../app/_components/Header';
-import { useState } from 'react';
-
-const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
-  const [showPopup, setShowPopup] = useState(false); // State to control the popup visibility
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
+const ContactForm = () => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [subject, setSubject] = useState('');
+  const [message, setMessage] = useState('');
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add logic to handle form submission (e.g., send form data to backend)
-    console.log(formData);
-    // Reset form fields after submission
-    setFormData({
-      name: '',
-      email: '',
-      message: ''
-    });
-    // Show the popup
-    setShowPopup(true);
-    // Hide the popup after 3 seconds
-    setTimeout(() => {
-      setShowPopup(false);
-    }, 3000);
+
+    emailjs.sendForm('service_w8haytn', 'template_elhk0oe', e.target, 'XEetsTxczxpFca6O9')
+      .then((result) => {
+        console.log('Email successfully sent!', result.text);
+        setIsSuccess(true);
+       
+        setName('');
+        setEmail('');
+        setSubject('');
+        setMessage('');
+      }, (error) => {
+        console.error('Email sending failed:', error);
+        // You can add further logic here, like showing an error message to the user
+      });
   };
 
   return (
-    <div>
-       <Header />
-       <div className="flex items-center justify-center h-screen">
-      <div>
-       
-        <div className="container px-10 py-8 bg-gray-200 rounded-lg shadow-lg"> {/* Adding gray background color */}
-          <h1 className="text-3xl font-bold mb-4 text-blue-600">Contact Us</h1>
-          <form onSubmit={handleSubmit}>
-            <div className="mb-4">
-              <label htmlFor="name" className="block mb-2 text-gray-600">Name</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                className="w-full border rounded px-4 py-2 text-gray-800"
-                required
-              />
-            </div>
-            <div className="mb-4">
-              <label htmlFor="email" className="block mb-2 text-gray-600">Email</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                className="w-full border rounded px-4 py-2 text-gray-800"
-                required
-              />
-            </div>
-            <div className="mb-4">
-              <label htmlFor="message" className="block mb-2 text-gray-600">Message</label>
-              <textarea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                rows={4}
-                className="w-full border rounded px-4 py-2 text-gray-800"
-                required
-              />
-            </div>
-            <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Submit</button>
+    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+      <Header />
+      <div style={{ flex: 1, backgroundColor: '#000', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+        <h1 style={{ color: '#fff', fontSize: '3rem', textAlign: 'center', marginBottom: '2rem' }}>Contact Us</h1>
+        {!isSuccess ? (
+          <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', backgroundColor: '#fff', padding: '2rem', borderRadius: '5px', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)' }}>
+            <label htmlFor="name" style={{ fontSize: '1.2rem', fontWeight: 'bold', marginBottom: '0.5rem' }}>Name</label>
+            <input type="text" id="name" name="name" value={name} onChange={(e) => setName(e.target.value)} style={{ padding: '0.5rem', borderRadius: '5px', border: '1px solid #ccc', width: '100%', boxSizing: 'border-box', marginBottom: '1rem' }} />
+
+            <label htmlFor="email" style={{ fontSize: '1.2rem', fontWeight: 'bold', marginBottom: '0.5rem' }}>Email</label>
+            <input type="email" id="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} style={{ padding: '0.5rem', borderRadius: '5px', border: '1px solid #ccc', width: '100%', boxSizing: 'border-box', marginBottom: '1rem' }} />
+
+            <label htmlFor="subject" style={{ fontSize: '1.2rem', fontWeight: 'bold', marginBottom: '0.5rem' }}>Subject</label>
+            <input type="text" id="subject" name="subject" value={subject} onChange={(e) => setSubject(e.target.value)} style={{ padding: '0.5rem', borderRadius: '5px', border: '1px solid #ccc', width: '100%', boxSizing: 'border-box', marginBottom: '1rem' }} />
+
+            <label htmlFor="message" style={{ fontSize: '1.2rem', fontWeight: 'bold', marginBottom: '0.5rem' }}>Message</label>
+            <textarea id="message" name="message" value={message} onChange={(e) => setMessage(e.target.value)} style={{ padding: '0.5rem', borderRadius: '5px', border: '1px solid #ccc', width: '100%', boxSizing: 'border-box', marginBottom: '1rem', height: '200px' }} />
+
+            <button type="submit" style={{ padding: '0.5rem 1rem', borderRadius: '5px', backgroundColor: '#007bff', color: '#fff', border: 'none', cursor: 'pointer' }}>Submit</button>
           </form>
-          {showPopup && (
-            <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
-              <div className="bg-white rounded-lg p-8">
-                <p className="text-xl text-center text-green-600">Your query has been submitted!</p>
-              </div>
-            </div>
-          )}
-        </div>
+        ) : (
+          <div style={{ backgroundColor: 'rgba(0, 123, 255, 0.3)', padding: '2rem', borderRadius: '5px', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)' }}>
+            <p style={{ fontSize: '1.5rem', color: '#fff' }}>Thank you for contacting us! We'll get back to you soon.</p>
+          </div>
+        )}
       </div>
-    </div>
+      <Footer style={{ flexShrink: 0 }} /> {/* Add Footer component here */}
     </div>
   );
 };
 
-export default Contact;
+export default ContactForm;

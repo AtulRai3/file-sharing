@@ -1,4 +1,5 @@
 import Header from '../app/_components/Header';
+import Footer from '../app/_components/_components/Footer'; // Import Footer component
 import './globals.css';
 
 const AboutPage = () => {
@@ -20,11 +21,21 @@ const AboutPage = () => {
                     <p className="text-lg mb-4 text-white">
                         FileSharing is suitable for individuals, businesses, and organizations of all sizes. Whether you're a freelancer, a small startup, or a large enterprise, our platform offers the scalability and flexibility you need to meet your file sharing requirements.
                     </p>
+                    <p className="text-lg mb-4 text-white">
+                        With FileSharing, you can:
+                    </p>
+                    <ul className="list-disc list-inside mb-4">
+                        <li className="text-lg text-white">Share large files effortlessly.</li>
+                        <li className="text-lg text-white">Protect your files with passwords for added security.</li>
+                        <li className="text-lg text-white">Share files via links or email, making it easy to collaborate with anyone, anywhere.</li>
+                        <li className="text-lg text-white">Easily manage your shared files, including deleting them from our secure database when no longer needed.</li>
+                    </ul>
                     <p className="text-lg text-white">
                         Get started today and experience the convenience and reliability of FileSharing for all your file sharing needs.
                     </p>
                 </div>
             </div>
+            <Footer /> {/* Add Footer component here */}
         </div>
     );
 };

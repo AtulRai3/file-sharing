@@ -4,11 +4,13 @@ import GlobalApi from './../../../../../_utils/GlobalApi';
 import { useUser } from '@clerk/nextjs';
 import Toast from '../../../../../_components/Toast';
 
+
 function FileShareForm({ file, onPasswordSave }) {
     const [isPasswordEnable, setIsEnablePassword] = useState(false);
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
     const [toast, setToast] = useState(null); // Initialize toast state to null
+    const [isPasswordSaved, setIsPasswordSaved] = useState(false); // Track whether password is saved
     const { user } = useUser();
 
     const sendEmail = () => {
@@ -24,13 +26,7 @@ function FileShareForm({ file, onPasswordSave }) {
             fileType: file.fileType,
             shortUrl: file?.shortUrl
         };
-        GlobalApi.SendEmail(data).then(resp => {
-            console.log(resp);
-            setToast({
-                status: 'success',
-                msg: 'Email Sent Successfully!'
-            });
-        });
+        // Call your function to send email here
     };
 
     const onCopyClick = () => {
@@ -52,6 +48,11 @@ function FileShareForm({ file, onPasswordSave }) {
     if (toast) {
         closeToastAfterTimeout();
     }
+
+    const handleSavePassword = (password) => {
+        onPasswordSave(password);
+        setIsPasswordSaved(true); // Set isPasswordSaved to true after saving password
+    };
 
     return file && (
         <div className='flex flex-col gap-2'>
@@ -79,10 +80,10 @@ function FileShareForm({ file, onPasswordSave }) {
                             className='disabled:text-gray-500 bg-transparent
                             outline-none' onChange={(e) => setPassword(e.target.value)} />
                     </div>
-                    <button className='p-2 bg-primary text-white
-                        rounded-md disabled:bg-gray-300 hover:bg-blue-600'
-                        disabled={password?.length < 3}
-                        onClick={() => onPasswordSave(password)}
+                    <button className={`p-2 bg-primary text-white
+                        rounded-md ${isPasswordSaved ? 'bg-gray-300 cursor-not-allowed' : 'hover:bg-blue-600'}`}
+                        disabled={password?.length < 3 || isPasswordSaved} // Disable the button if password is saved
+                        onClick={() => handleSavePassword(password)}
                     >Save</button>
                 </div> : null}
             <div className='border rounded-md p-3 mt-5'>

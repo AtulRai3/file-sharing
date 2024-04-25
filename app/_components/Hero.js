@@ -1,23 +1,7 @@
 import React from 'react';
 import Constant from '../_utils/Constant';
+import Footer from "./_components/Footer.js";
 
-// Footer component
-function Footer() {
-  // Get the current year
-  const currentYear = new Date().getFullYear();
-
-  return (
-    <footer className="bg-gray-800 text-white py-6">
-      <div className="mx-auto max-w-screen-xl px-4 text-center">
-        <p className="mb-2">&copy; {currentYear} Your Website Name. All rights reserved.</p>
-        <p className="text-sm">Built with <a href="https://reactjs.org/" className="underline">React</a> and <a href="https://nextjs.org/" className="underline">Next.js</a></p>
-        <p className="text-sm mt-2">Designed by Your Name</p>
-      </div>
-    </footer>
-  );
-}
-
-// Hero component
 function Hero() {
   return (
     <div>
@@ -46,7 +30,7 @@ function Hero() {
       
               <a
                 className="block w-full rounded border border-blue-600 px-12 py-3 text-sm font-medium text-white hover:bg-blue-600 focus:outline-none focus:ring active:bg-blue-500 sm:w-auto"
-                href=""
+                href="/contact"
               >
                 Learn More
               </a>
@@ -54,7 +38,8 @@ function Hero() {
           </div>
         </div>
       </section>
-      <Footer /> {/* Including the Footer component */}
+      
+      <Footer /> {/* Render Footer component */}
     </div>
   );
 }

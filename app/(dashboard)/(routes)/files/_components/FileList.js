@@ -1,8 +1,10 @@
+// FileList.js
+
 import React from 'react';
-import { Link } from '@react-email/components';
+import Link from 'next/link';
 
 function FileList({ fileList, onDelete }) {
-  return fileList && (
+  return (
     <div className="overflow-x-auto mt-7">
       <table className="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
         <thead className="text-left">
@@ -11,7 +13,7 @@ function FileList({ fileList, onDelete }) {
             <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Type</th>
             <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Size</th>
             <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900"></th>
-            <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900"></th> {/* Add delete button column */}
+            <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900"></th>
           </tr>
         </thead>
 

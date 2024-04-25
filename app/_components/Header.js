@@ -11,10 +11,10 @@ function Header() {
     };
 
     return (
-        <header className="bg-white">
-            <div className="mx-auto flex h-16 max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-8 border-b">
+        <header className="bg-gray-200">
+            <div className="mx-auto flex h-16 max-w-screen-x2 items-center gap-8 px-4 sm:px-6 lg:px-8 border-b">
                 <Link href="/">
-                    <Image src='/logo1.png' width={150} height={100} alt='logo' />
+                    <Image src='/logo2.png' width={150} height={100} alt='logo' />
                 </Link>
                 <div className="flex flex-1 items-center justify-end md:justify-between">
                     <button
@@ -31,11 +31,11 @@ function Header() {
                     <nav aria-label="Global" className={`md:flex md:items-center md:w-auto ${isMenuOpen ? 'block' : 'hidden'}`}>
                         {isMenuOpen ? (
                             // Render custom menu items when menu is open
-                            <ul className="space-y-1 block rounded-lg  bg-white ">
+                            <ul className="space-y-1 block rounded-lg  bg-gray-200 ">
                                 <li>
                                 <a
-                                        href=""
-                                        className="block rounded-lg px-4 py-14 text-sm font-medium text-white hover:bg-gray-400 hover:text-white dark:text-white dark:hover:bg-gray-800 dark:hover:text-white"
+                                        
+                                        className="block rounded-lg px-4 py-14 text-sm font-medium text-white hover:bg-gray-200 hover:text-white dark:text-white dark:hover:bg-gray-800 dark:hover:text-white"
                                     >
                                         Home
                                     </a>
@@ -43,8 +43,8 @@ function Header() {
 
                                 <li>
                                     <a
-                                        href=""
-                                        className="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-200 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-gray-200"
+                                        href="/"
+                                        className="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-300 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-gray-200"
                                     >
                                         Home
                                     </a>
@@ -53,7 +53,7 @@ function Header() {
                                 <li>
                                     <a
                                         href="upload"
-                                        className="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-200 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-gray-200"
+                                        className="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-300 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-gray-200"
                                     >
                                         Upload
                                     </a>
@@ -62,7 +62,7 @@ function Header() {
                                 <li>
                                     <a
                                         href="about"
-                                        className="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-200 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-gray-200"
+                                        className="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-300 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-gray-200"
                                     >
                                         About Us
                                     </a>
@@ -71,7 +71,7 @@ function Header() {
                                 <li>
                                     <a
                                         href="contact"
-                                        className="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-200 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-gray-200"
+                                        className="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-300 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-gray-200"
                                     >
                                         Contact
                                     </a>
@@ -84,24 +84,24 @@ function Header() {
                                 <li>
                                     <Link
                                         href="/"
-                                        className="text-gray-500 transition hover:text-gray-500/75">
+                                        className="text-gray-500 transition hover:text-gray-700 text-lg hover:bg-gray-100">
                                         Home
                                     </Link>
                                 </li>
                                 <li>
                                     <Link
                                         href="/upload"
-                                        className="text-gray-500 transition hover:text-gray-500/75">
+                                        className="text-gray-500 transition hover:text-gray-700 text-lg hover:bg-gray-100">
                                         Upload
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link href="/about" className="text-gray-500 transition hover:text-gray-500/75">
+                                    <Link href="/about" className="text-gray-500 transition hover:text-gray-700 text-lg hover:bg-gray-100">
                                         About Us
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link href="/contact" className="text-gray-500 transition hover:text-gray-500/75">
+                                    <Link href="/contact" className="text-gray-500 transition hover:text-gray-700 text-lg hover:bg-gray-100">
                                         Contact Us
                                     </Link>
                                 </li>

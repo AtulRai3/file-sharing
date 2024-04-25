@@ -8,7 +8,7 @@ function FileInfo({ file }) {
     if (file) {
       const fileType = file?.fileType.split('/')[0];
       setFileType(fileType);
-      console.log(fileType); // Log fileType inside useEffect
+      //console.log(fileType); // Log fileType inside useEffect
     }
   }, [file]);
 
