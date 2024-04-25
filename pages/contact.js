@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Header from '../app/_components/Header';
-import Footer from '../app/_components/_components/Footer'; // Import Footer component
+import Footer from '../app/_components/_components/Footer'; 
 import emailjs from 'emailjs-com';
 import './globals.css';
 
